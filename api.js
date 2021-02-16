@@ -42,6 +42,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 
 // Dapat QR
 client.on('qr', qr => {
+    console.log("Get QR", qr);
     fs.writeFileSync('./wa-temp/last.qr',qr);
 });
 
@@ -64,6 +65,12 @@ client.on('authenticated', (session) => {
 client.on('auth_failure', () => {
     console.log("AUTH Failed !")
     sessionCfg = ""
+    try{
+        fs.unlinkSync('./wa-temp/session.json')
+        client.initialize();
+    }catch(err){
+        console.log({msg : "Sudah Logout"})
+    }
     //process.exit()
 });
 
