@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pranavms13/whatsapp-node-api.git"
+    "url": "git+https://gitlab.com/aldo_k/whatsapp-node-api-with-jwt.git"
   },
   "keywords": [
     "whatsapp-api",
@@ -20,9 +20,9 @@
   "author": "Pranav M S",
   "license": "CC-BY-NC",
   "bugs": {
-    "url": "https://github.com/pranavms13/whatsapp-node-api/issues"
+    "url": "https://gitlab.com/aldo_k/whatsapp-node-api-with-jwt/issues"
   },
-  "homepage": "https://github.com/pranavms13/whatsapp-node-api#readme",
+  "homepage": "https://gitlab.com/aldo_k/whatsapp-node-api-with-jwt#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
