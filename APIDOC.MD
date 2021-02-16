@@ -12,8 +12,8 @@
 > Used to logout your device (wa account) from whatsapp gateway
 <hr>
 
-<u>Check Healt</u>
- ``GET : /api/v1/whatsapp/healt``
+<u>Check Health</u>
+ ``GET : /api/v1/whatsapp/health``
 > Used to check your connection whatsapp status
 <hr>
 
