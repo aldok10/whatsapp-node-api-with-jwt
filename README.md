@@ -19,6 +19,12 @@
 
 -  [puppeteer](https://github.com/GoogleChrome/puppeteer)
 
+-  [helmet](https://github.com/helmetjs/helmet)
+
+-  [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
+
+-  [axios](https://github.com/axios/axios)
+
 
 ## [API Doc](https://gitlab.com/aldo_k/whatsapp-node-api-with-jwt/blob/master/APIDOC.MD)
   
