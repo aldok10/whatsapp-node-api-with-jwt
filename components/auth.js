@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const fs = require('fs');
-const {verify} = require('./middleware')
 
-router.get('/health', verify, async (req, res) => {
+router.get('/health', async (req, res) => {
     client.getState().then((data) => {
         console.log({
             status_connection : data,
@@ -39,7 +38,7 @@ router.get('/health', verify, async (req, res) => {
     })
 });
 
-router.get('/logout', verify, async (req, res) => {
+router.get('/logout', async (req, res) => {
     client.logout().then((data) => {
         try{
             fs.unlinkSync('./wa-temp/session.json')
