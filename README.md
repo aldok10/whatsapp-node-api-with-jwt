@@ -1,9 +1,8 @@
 
 # whatsapp-node-api 
 
+> Base Source From [https://github.com/pranavms13/whatsapp-node-api](https://github.com/pranavms13/whatsapp-node-api)
 > A simple NodeJS Wrapper for [whatsapp-web.js by pedroslopez](https://github.com/pedroslopez/whatsapp-web.js)
-
-  
 
 • [Technologies Used](https://gitlab.com/aldo_k/whatsapp-node-api-with-jwt#technologies) • [Why?](https://gitlab.com/aldo_k/whatsapp-node-api-with-jwt#why) • [Goals](https://gitlab.com/aldo_k/whatsapp-node-api-with-jwt#goals) • [FAQ](https://gitlab.com/aldo_k/whatsapp-node-api-with-jwt#faq)
 
