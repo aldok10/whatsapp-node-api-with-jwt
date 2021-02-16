@@ -152,7 +152,7 @@ app.use(function(req, res, next){
     next();
 });
 
-app.use('/api/v1/whatsapp', verify, authRoute);
+app.use('/api/v1/whatsapp', authRoute);
 app.use('/api/v1/whatsapp/send', verify, chatRoute);
 app.use('/api/v1/whatsapp/send/group', verify, groupRoute);
 app.use('/api/v1/whatsapp/endpoint/contact', verify, contactRoute);
