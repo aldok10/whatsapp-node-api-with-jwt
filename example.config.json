@@ -1,0 +1,16 @@
+{
+    "port":3002,
+    "webhook":{
+        "enabled":false,
+        "path":""
+    },
+    "jwt" : {
+        "ACCESS_TOKEN_SECRET" : "ald0_kmysecretpassword",
+        "ACCESS_TOKEN_LIFE" : 2592000,
+        "REFRESH_TOKEN_SECRET" : "mysecretpasswordmysecretpassword",
+        "REFRESH_TOKEN_LIFE" : 2592000
+    },
+    "user" : {
+        "aldo_k" : { "password" : "mysecretpassword" }
+    }
+}
