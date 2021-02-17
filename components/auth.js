@@ -52,22 +52,30 @@ router.get('/logout', async (req, res) => {
 });
 
 router.get('/login', (req,res) => {
+    let type = req.query.type;
+
     fs.readFile('./wa-temp/last.qr', (err,last_qr) => {
         fs.readFile('./wa-temp/session.json', (serr, sessiondata) => {
             if(err && sessiondata){
                 res.send({msg : "Sudah Login"});
                 res.end();
             }else if(!err && serr){
+                
                 QRCode.toDataURL(`${last_qr}`, function (err, url) {
-                    res.send({
-                    status : false,
-                    message : "Scan QR Code",
-                    data : {
-                        err : err,
-                        qrcode : `${url}`
+                    if(type!=="html"){
+                        res.send({
+                            status : false,
+                            message : "Scan QR Code",
+                            data : {
+                                err : err,
+                                qrcode : `${url}`
+                            }
+                        })
+                    } else {
+                        var page = `<img id="imgQrcode" src="${url}">`;
+                        res.write(page)
                     }
-                })
-                res.end();
+                    res.end();
                 })
             }
         })
