@@ -64,7 +64,6 @@ client.on('authenticated', (session) => {
 // Gagal Auth
 client.on('auth_failure', () => {
     console.log("AUTH Failed !")
-    sessionCfg = ""
     try{
         fs.unlinkSync('./wa-temp/session.json')
         client.initialize();
@@ -152,21 +151,22 @@ app.use(function(req, res, next){
     next();
 });
 
-app.post('/api/v1/whatsapp/auth', login)
-app.post('/api/v1/whatsapp/refresh', verify, refresh)
+app.post('/api/v1/whatsapp/auth', login);
+app.post('/api/v1/whatsapp/refresh', verify, refresh);
+
 app.use('/api/v1/whatsapp', verify, authRoute);
 app.use('/api/v1/whatsapp/send', verify, chatRoute);
 app.use('/api/v1/whatsapp/send/group', verify, groupRoute);
 app.use('/api/v1/whatsapp/endpoint/contact', verify, contactRoute);
 
 
-// app.use('*', function(req, res){
-//   res.status(404).send({
-//             status : false,
-//             message : "Page Not Found!",
-//             data : null
-//         });
-// });
+app.use('*', function(req, res){
+  res.status(404).send({
+            status : false,
+            message : "Page Not Found!",
+            data : null
+        });
+});
 
 app.listen(port, () => {
     console.log("Server Running Live on Port : " + port);

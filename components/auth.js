@@ -41,22 +41,13 @@ router.get('/health', async (req, res) => {
 
 router.get('/logout', async (req, res) => {
     client.logout().then((data) => {
-        try{
-            fs.unlinkSync('./wa-temp/session.json')
-        }catch(err){
-            console.log({msg : "Sudah Logout"})
-        }
-        res.send({msg : "Berhasil Logout"})
-        console.log({msg : "Berhasil Logout"})
+        console.log(data);
+
+        res.send({msg : "Berhasil Logout"});
     }).catch((err) => {
-        if(err){
-            res.send({msg : "Berhasil Logout Ulang"})
-            try{
-                fs.unlinkSync('./wa-temp/session.json')
-            }catch(err){
-                console.log({msg : "Sudah Logout"})
-            }
-        }
+        console.log(err);
+        
+        console.log({msg : "Berhasil Logout"});
     })
 });
 
@@ -67,7 +58,6 @@ router.get('/login', (req,res) => {
                 res.send({msg : "Sudah Login"});
                 res.end();
             }else if(!err && serr){
-                let qr = '';
                 QRCode.toDataURL(`${last_qr}`, function (err, url) {
                     res.send({
                     status : false,
