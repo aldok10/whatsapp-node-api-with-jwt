@@ -80,9 +80,24 @@ client.on('ready', () => {
 
 // Pesan Diterima
 client.on('message', msg => {
-    console.log(msg)
-    if(config.webhook.enabled){
-        axios.post(config.webhook.path, {msg : msg})
+    // console.log(msg)
+    let remote = msg.id.remote;
+
+    remote = remote.split('@');
+
+    let number = remote[0];
+    let type = remote[1];
+
+    if (type==="c.us") {
+        if(config.webhook.enabled){
+            axios.post(config.webhook.path, {msg : `Anda Menerima Pesan\nDari : wa.me/${number}\nPesan : ` + msg.body}).then(res => {
+                // console.log(`statusCode: ${res.statusCode}`)
+                console.log("Balasan Webhook", res.data)
+            })
+            .catch(error => {
+                // console.error(error)
+            })
+        }
     }
 });
 
