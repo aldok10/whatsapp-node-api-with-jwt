@@ -42,7 +42,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 
 // Dapat QR
 client.on('qr', qr => {
-    console.log("Get QR", qr);
+    // console.log("Get QR", qr);
     fs.writeFileSync('./wa-temp/last.qr',qr);
 });
 
@@ -152,21 +152,21 @@ app.use(function(req, res, next){
     next();
 });
 
+app.post('/api/v1/whatsapp/auth', login)
+app.post('/api/v1/whatsapp/refresh', verify, refresh)
 app.use('/api/v1/whatsapp', verify, authRoute);
 app.use('/api/v1/whatsapp/send', verify, chatRoute);
 app.use('/api/v1/whatsapp/send/group', verify, groupRoute);
 app.use('/api/v1/whatsapp/endpoint/contact', verify, contactRoute);
 
-app.post('/api/v1/whatsapp/auth', login)
-app.post('/api/v1/whatsapp/refresh', verify, refresh)
 
-app.use('*', function(req, res){
-  res.status(404).send({
-            status : false,
-            message : "Page Not Found!",
-            data : null
-        });
-});
+// app.use('*', function(req, res){
+//   res.status(404).send({
+//             status : false,
+//             message : "Page Not Found!",
+//             data : null
+//         });
+// });
 
 app.listen(port, () => {
     console.log("Server Running Live on Port : " + port);

@@ -1,3 +1,4 @@
+const QRCode = require('qrcode');
 const router = require('express').Router();
 const fs = require('fs');
 
@@ -60,22 +61,24 @@ router.get('/logout', async (req, res) => {
 });
 
 router.get('/login', (req,res) => {
-    var qrjs = fs.readFileSync('components/qrcode.js');
     fs.readFile('./wa-temp/last.qr', (err,last_qr) => {
         fs.readFile('./wa-temp/session.json', (serr, sessiondata) => {
             if(err && sessiondata){
                 res.send({msg : "Sudah Login"});
                 res.end();
             }else if(!err && serr){
-                var page = `
-                            <script>${qrjs}</script>
-                            <div id="qrcode"></div>
-                            <script type="text/javascript">
-                                new QRCode(document.getElementById("qrcode"), "${last_qr}");
-                            </script>
-                `
-                res.write(page)
+                let qr = '';
+                QRCode.toDataURL(`${last_qr}`, function (err, url) {
+                    res.send({
+                    status : false,
+                    message : "Scan QR Code",
+                    data : {
+                        err : err,
+                        qrcode : `${url}`
+                    }
+                })
                 res.end();
+                })
             }
         })
     });
